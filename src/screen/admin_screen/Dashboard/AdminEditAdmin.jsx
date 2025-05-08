@@ -4,7 +4,6 @@ import DashboardHeader from '../../../component/userscreencomp/dashboardNav';
 import DashboardDrawer from '../../../component/userscreencomp/Drawer';
 import Sidebar from '../../../component/adminscreencomp/sidebar';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useSelector } from "react-redux";
 import LoadingModal from "../../../component/Modal/LoadingModal";
 import { useDispatch } from 'react-redux';
 import { updateAdmin } from '../../../store/action/userAppStorage';
@@ -32,17 +31,17 @@ const AdminEdit = () => {
     const updateHandler = async (data) => {
         setIsLoading(true);
         const res = await dispatch(updateAdmin(data));
-
         if (!res.bool) {
             setIsAuthError(true);
             setAuthInfo(res.message);
             setIsLoading(false);
             return;
         }
-
         setIsLoading(false);
         navigate('/admindashboard/users');
-    };
+    }
+
+    
 
     return (
         <>

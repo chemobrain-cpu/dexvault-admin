@@ -141,6 +141,8 @@ export const AdminUserEditComponent = ({ updateHandler }) => {
             {booleanSelect('Info Verified', 'infoVerified')}
             {booleanSelect('Photo Verified', 'photoVerified')}
             {booleanSelect('Passcode Set', 'isSetPasscode')}
+            {booleanSelect('Account Status', 'accountStatus')}
+            {booleanSelect('Wallet Feature', 'walletFeauture')}
 
             <div style={{ width: '100%' }}>
               <button

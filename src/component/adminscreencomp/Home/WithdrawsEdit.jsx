@@ -150,7 +150,7 @@ export const AdminWithrawEditComponent = ({ updateHandler, }) => {
             }}
           >
             <option value="active">Active</option>
-            <option value="pending">Pending</option>
+            <option value="Pending">Pending</option>
           </select>
         </div>
 

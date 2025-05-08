@@ -15,6 +15,7 @@ const Sidebar = ({ status }) => {
     { icon: 'settings', title: 'setting', link: '/admindashboard/admin' },
     { icon: 'money', title: 'deposits', link: '/admindashboard/deposits' },
     { icon: 'explore', title: 'trades', link: '/admindashboard/trades' },
+    { icon: 'explore', title: 'withdraws', link: '/admindashboard/withdraws' },
   ];
 
   const navigateHandler = (item) => {
