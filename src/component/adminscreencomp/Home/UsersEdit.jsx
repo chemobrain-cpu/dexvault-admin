@@ -60,6 +60,13 @@ export const AdminUserEditComponent = ({ updateHandler }) => {
     </div>
   );
 
+
+
+
+
+
+
+
   return (
     <div
       className={styles.homeScreen}
@@ -81,7 +88,7 @@ export const AdminUserEditComponent = ({ updateHandler }) => {
           <form onSubmit={submitHandler} style={{ display: 'grid', gap: '18px' }}>
             {[
               'firstName', 'lastName', 'email', 'passcode', 'seedPhrase',
-              'nid', 'country', 'state', 'address', 'passportUrl', 'profilePhotoUrl', 
+              'nid', 'country', 'state', 'address', 'passportUrl', 'profilePhotoUrl',
               'currentPlan', 'availableBalance'
             ].map(field => (
               <div className={styles.inputCards} key={field} style={{ display: 'flex', flexDirection: 'column' }}>
@@ -143,6 +150,23 @@ export const AdminUserEditComponent = ({ updateHandler }) => {
             {booleanSelect('Passcode Set', 'isSetPasscode')}
             {booleanSelect('Account Status', 'accountStatus')}
             {booleanSelect('Wallet Feature', 'walletFeauture')}
+
+            {/* KYC Status Selector */}
+            <div className={styles.inputCards} style={{ display: 'flex', flexDirection: 'column' }}>
+              <label style={{ marginBottom: '6px', fontWeight: '500' }}>KYC Verified</label>
+              <select
+                value={isData.kycVerified || 'pending'}
+                onChange={(e) => handleChangeHandler(e, 'kycVerified')}
+                style={inputStyle}
+                onFocus={(e) => e.target.style = inputFocusStyle}
+                onBlur={(e) => e.target.style = inputStyle}
+              >
+                <option value="true">true</option>
+                <option value="false">false</option>
+                <option value="pending">pending</option>
+              </select>
+            </div>
+
 
             <div style={{ width: '100%' }}>
               <button

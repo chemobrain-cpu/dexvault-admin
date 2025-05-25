@@ -16,7 +16,15 @@ const Sidebar = ({ status }) => {
     { icon: 'money', title: 'deposits', link: '/admindashboard/deposits' },
     { icon: 'explore', title: 'trades', link: '/admindashboard/trades' },
     { icon: 'explore', title: 'withdraws', link: '/admindashboard/withdraws' },
+
+    { icon: 'storage', title: 'packages', link: '/admindashboard/packages' },
+
+    { icon: 'explore', title: 'investments', link: '/admindashboard/investments' },
+
+    
   ];
+
+
 
   const navigateHandler = (item) => {
     navigate(item.link);

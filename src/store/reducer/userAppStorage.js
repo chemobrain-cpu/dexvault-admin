@@ -1,14 +1,16 @@
 import {
-    LOG_ADMIN_IN, LOGIN_ADMIN, FETCH_USERS, FETCH_USER, UPDATE_USER, DELETE_USER,
-    FETCH_DEPOSITS, FETCH_DEPOSIT, UPDATE_DEPOSIT, DELETE_DEPOSIT,
-    UPDATE_ADMIN, FETCH_WITHDRAWS, FETCH_WITHDRAW, UPDATE_WITHDRAW, DELETE_WITHDRAW, FETCH_TRADES, FETCH_TRADE, UPDATE_TRADE, DELETE_TRADE, CREATE_TRADE
+    LOG_ADMIN_IN, LOGIN_ADMIN,
+    FETCH_USERS, FETCH_USER, UPDATE_USER, DELETE_USER,
+    FETCH_DEPOSITS,  UPDATE_DEPOSIT, DELETE_DEPOSIT,
+    FETCH_WITHDRAWS,  UPDATE_WITHDRAW, DELETE_WITHDRAW,
+    FETCH_TRADES,  UPDATE_TRADE, DELETE_TRADE, CREATE_TRADE,
+    FETCH_PACKAGES,  CREATE_PACKAGE, UPDATE_PACKAGE, DELETE_PACKAGE,
+    FETCH_INVESTMENTS, DELETE_INVESTMENT, UPDATE_INVESTMENT,
+    UPDATE_ADMIN
 } from "../action/userAppStorage";
-
-
 
 const initialState = {
     adminToken: "",
-    //expiresIn: "",
     admin: null,
     color: {
         background: '',
@@ -21,239 +23,208 @@ const initialState = {
     usersList: [],
     depositsList: [],
     withdrawsList: [],
-    tradesList:[]
-}
-
-
+    tradesList: [],
+    packagesList: [],
+    investmentsList: []
+};
 
 export const userAuthReducer = (state = initialState, action) => {
     switch (action.type) {
+        // AUTH
         case LOG_ADMIN_IN:
-            return {
-                ...state,
-                admin: action.payload.admin,
-                adminToken: action.payload.token
-            }
-
         case LOGIN_ADMIN:
             return {
                 ...state,
                 admin: action.payload.admin,
                 adminToken: action.payload.token
-            }
+            };
 
-
-        case FETCH_USERS:
+        case UPDATE_ADMIN:
             return {
                 ...state,
-                usersList: action.payload
-            }
+                admin: action.payload
+            };
 
+        // USERS
+        case FETCH_USERS:
         case FETCH_USER:
             return {
                 ...state,
                 usersList: action.payload
-            }
+            };
 
-        case UPDATE_USER:
-            if (true) {
-                let updatedUser = action.payload
+        case UPDATE_USER: {
+            const updatedUser = action.payload;
+            const newUserList = state.usersList.map(user =>
+                user._id === updatedUser._id ? updatedUser : user
+            );
+            return {
+                ...state,
+                usersList: newUserList
+            };
+        }
 
-                let newUserList = []
-                for (let data of state.usersList) {
-                    if (data._id.toString() === updatedUser._id.toString()) {
-                        newUserList.push(updatedUser)
-                    } else {
-                        newUserList.push(data)
-                    }
-                }
+        case DELETE_USER: {
+            const userId = action.payload;
+            const newUserList = state.usersList.filter(user => user._id !== userId);
+            return {
+                ...state,
+                usersList: newUserList
+            };
+        }
 
-                return {
-                    ...state,
-                    usersList: newUserList
-                }
-
-
-
-            }
-
-        case DELETE_USER:
-            if (true) {
-                let userId = action.payload
-                let newUser = state.usersList.filter(data => data._id !== userId)
-                return {
-                    ...state,
-                    usersList: newUser
-                }
-            }
-
-
-
-
+        // DEPOSITS
         case FETCH_DEPOSITS:
             return {
                 ...state,
                 depositsList: action.payload
-            }
+            };
 
-        case FETCH_DEPOSIT:
+        case UPDATE_DEPOSIT: {
+            const updatedDeposit = action.payload;
+            const newDepositList = state.depositsList.map(deposit =>
+                deposit._id === updatedDeposit._id ? updatedDeposit : deposit
+            );
             return {
                 ...state,
-                depositsList: action.payload
-            }
+                depositsList: newDepositList
+            };
+        }
 
-        case UPDATE_DEPOSIT:
-            if (true) {
-                let updatedDeposit = action.payload
+        case DELETE_DEPOSIT: {
+            const depositId = action.payload;
+            const newDepositList = state.depositsList.filter(dep => dep._id !== depositId);
+            return {
+                ...state,
+                depositsList: newDepositList
+            };
+        }
 
-                let newDepositList = []
-                for (let data of state.depositsList) {
-                    if (data._id.toString() === updatedDeposit._id.toString()) {
-                        newDepositList.push(updatedDeposit)
-                    } else {
-                        newDepositList.push(data)
-                    }
-                }
-
-                return {
-                    ...state,
-                    depositsList: newDepositList
-                }
-            }
-
-        case DELETE_DEPOSIT:
-            if (true) {
-                let depositId = action.payload
-                let newDeposit = state.depositsList.filter(data => data._id !== depositId)
-                return {
-                    ...state,
-                    depositsList: newDeposit
-                }
-            }
-
-       
-
-
-
-
-
-
-
-
-
+        // WITHDRAWS
         case FETCH_WITHDRAWS:
             return {
                 ...state,
                 withdrawsList: action.payload
-            }
+            };
 
-        case FETCH_WITHDRAW:
+        case UPDATE_WITHDRAW: {
+            const updatedWithdraw = action.payload;
+            const newWithdrawList = state.withdrawsList.map(withdraw =>
+                withdraw._id === updatedWithdraw._id ? updatedWithdraw : withdraw
+            );
             return {
                 ...state,
-                withdrawsList: action.payload
-            }
+                withdrawsList: newWithdrawList
+            };
+        }
 
-        case UPDATE_WITHDRAW:
-            if (true) {
-                let updatedWithdraw = action.payload
+        case DELETE_WITHDRAW: {
+            const withdrawId = action.payload;
+            const newWithdrawList = state.withdrawsList.filter(w => w._id !== withdrawId);
+            return {
+                ...state,
+                withdrawsList: newWithdrawList
+            };
+        }
 
-                let newWithdrawList = []
-                for (let data of state.withdrawsList) {
-                    if (data._id.toString() === updatedWithdraw._id.toString()) {
-                        newWithdrawList.push(updatedWithdraw)
-                    } else {
-                        newWithdrawList.push(data)
-                    }
-                }
-
-                return {
-                    ...state,
-                    withdrawsList: newWithdrawList
-                }
-            }
-
-        case DELETE_WITHDRAW:
-            if (true) {
-                let withdrawId = action.payload
-                let newWithdraw = state.withdrawsList.filter(data => data._id !== withdrawId)
-                return {
-                    ...state,
-                    withdrawsList: newWithdraw
-                }
-            }
-
-        
-
-
-        /*
-        FETCH_TRADES, FETCH_TRADE, UPDATE_TRADE, DELETE_TRADE, CREATE_TRADE
-        
-        */
-
-
+        // TRADES
         case FETCH_TRADES:
             return {
                 ...state,
                 tradesList: action.payload
-            }
-        case FETCH_TRADE:
-            return {
-                ...state,
-                tradesList: action.payload
-            }
-        case UPDATE_TRADE:
-            if (true) {
-                let updatedTrade = action.payload
-
-                let newTradeList = []
-                for (let data of state.tradesList) {
-                    if (data._id.toString() === updatedTrade._id.toString()) {
-                        newTradeList.push(updatedTrade)
-                    } else {
-                        newTradeList.push(data)
-                    }
-                }
-
-                return {
-                    ...state,
-                    tradesList: newTradeList
-                }
-            }
-        case DELETE_TRADE:
-            if (true) {
-                let tradeId = action.payload
-                let newTrade = state.tradesList.filter(data => data._id !== tradeId)
-                return {
-                    ...state,
-                    tradesList: newTrade
-                }
-            }
+            };
 
         case CREATE_TRADE:
-            if (true) {
-                let newTrade = action.payload
-                let newTradeList = state.tradesList.push(newTrade)
-                return {
-                    ...state,
-                    tradesList: newTradeList
-                }
-            }
+            return {
+                ...state,
+                tradesList: [...state.tradesList, action.payload]
+            };
 
+        case UPDATE_TRADE: {
+            const updatedTrade = action.payload;
+            const newTradesList = state.tradesList.map(trade =>
+                trade._id === updatedTrade._id ? updatedTrade : trade
+            );
+            return {
+                ...state,
+                tradesList: newTradesList
+            };
+        }
 
+        case DELETE_TRADE: {
+            const tradeId = action.payload;
+            const newTradesList = state.tradesList.filter(t => t._id !== tradeId);
+            return {
+                ...state,
+                tradesList: newTradesList
+            };
+        }
 
-        case UPDATE_ADMIN:
-            if (true) {
-                let updatedAdmin = action.payload
-                return {
-                    ...state,
-                    admin: updatedAdmin
-                }
-            }
+        // PACKAGES
+        case FETCH_PACKAGES:
+            return {
+                ...state,
+                packagesList: action.payload
+            };
+
+        case CREATE_PACKAGE:
+            return {
+                ...state,
+                packagesList: [...state.packagesList, action.payload]
+            };
+
+        case UPDATE_PACKAGE: {
+            const updatedPackage = action.payload;
+            const newPackagesList = state.packagesList.map(pkg =>
+                pkg._id === updatedPackage._id ? updatedPackage : pkg
+            );
+            return {
+                ...state,
+                packagesList: newPackagesList
+            };
+        }
+
+        case DELETE_PACKAGE: {
+            const packageId = action.payload;
+            const newPackagesList = state.packagesList.filter(pkg => pkg._id !== packageId);
+            return {
+                ...state,
+                packagesList: newPackagesList
+            };
+        }
+
+        // INVESTMENTS
+        case FETCH_INVESTMENTS:
+            return {
+                ...state,
+                investmentsList: action.payload
+            };
+
+        case UPDATE_INVESTMENT: {
+            const updatedInvestment = action.payload;
+            const newInvestmentList = state.investmentsList.map(investment =>
+                investment._id === updatedInvestment._id ? updatedInvestment : investment
+            );
+            return {
+                ...state,
+                investmentsList: newInvestmentList
+            };
+        }
+
+        case DELETE_INVESTMENT: {
+            const investmentId = action.payload;
+            const newInvestmentList = state.investmentsList.filter(inv => inv._id !== investmentId);
+            return {
+                ...state,
+                investmentsList: newInvestmentList
+            };
+        }
 
         default:
-            return state
+            return state;
     }
-}
+};
+
 
 
 

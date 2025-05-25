@@ -10,13 +10,13 @@ export const UPDATE_USER = 'UPDATE_USER'
 export const DELETE_USER = 'DELETE_USER'
 
 export const FETCH_DEPOSITS = 'FETCH_DEPOSITS'
-export const FETCH_DEPOSIT= 'FETCH_DEPOSIT'
+export const FETCH_DEPOSIT = 'FETCH_DEPOSIT'
 export const UPDATE_DEPOSIT = 'UPDATE_DEPOSIT'
 export const DELETE_DEPOSIT = 'DELETE_DEPOSIT'
 
 
 export const FETCH_WITHDRAWS = 'FETCH_WITHDRAW'
-export const FETCH_WITHDRAW= 'FETCH_WITHDRAW'
+export const FETCH_WITHDRAW = 'FETCH_WITHDRAW'
 export const UPDATE_WITHDRAW = 'UPDATE_WITHDRAW'
 export const DELETE_WITHDRAW = 'DELETE_WITHDRAW'
 
@@ -25,6 +25,21 @@ export const FETCH_TRADE = 'FETCH_TRADE'
 export const UPDATE_TRADE = 'UPDATE_TRADE'
 export const DELETE_TRADE = 'DELETE_TRADE'
 export const CREATE_TRADE = 'CREATE_TRADE'
+
+
+
+// Investment actions
+export const FETCH_INVESTMENTS = 'FETCH_INVESTMENTS';
+export const DELETE_INVESTMENT = 'DELETE_INVESTMENT';
+export const UPDATE_INVESTMENT = 'UPDATE_INVESTMENT';
+
+
+
+
+export const FETCH_PACKAGES = 'FETCH_PACKAGES'
+export const DELETE_PACKAGE = 'DELETE_PACKAGE'
+export const UPDATE_PACKAGE = 'UPDATE_PACKAGE'
+export const CREATE_PACKAGE = 'CREATE_PACKAGE'
 
 
 
@@ -91,7 +106,7 @@ export const checkIfAdminIsLoggedIn = () => {
 
       response = await fetch(`https://dexvault-backend.onrender.com/adminbytoken`, {
         method: "GET",
-        headers:{
+        headers: {
           "Content-Type": "application/json",
           "header": `${adminToken}`
         }
@@ -194,12 +209,12 @@ export const signupAdmin = (data) => {
           url: '/login'
         }
       }
-   
+
 
       if (response.status === 200) {
         let data = await response.json()
 
-        
+
         localStorage.setItem("admin", JSON.stringify(data.response.admin))
 
         localStorage.setItem("admin_token", JSON.stringify(data.response.token))
@@ -228,7 +243,7 @@ export const signupAdmin = (data) => {
 }
 
 
-export const fetchUsers = ()=>{
+export const fetchUsers = () => {
   return async (dispatch, getState) => {
     let {
       adminToken
@@ -260,7 +275,7 @@ export const fetchUsers = ()=>{
 
       if (response.status === 200) {
         let data = await response.json()
-        dispatch({type:FETCH_USERS,payload:data.response})
+        dispatch({ type: FETCH_USERS, payload: data.response })
 
         return {
           bool: true,
@@ -279,7 +294,7 @@ export const fetchUsers = ()=>{
 
 }
 
-export const deleteUser = (id)=>{
+export const deleteUser = (id) => {
   return async (dispatch, getState) => {
     let {
       adminToken
@@ -313,7 +328,7 @@ export const deleteUser = (id)=>{
       if (response.status === 200) {
         let data = await response.json()
 
-        dispatch({type:DELETE_USER,payload:id})
+        dispatch({ type: DELETE_USER, payload: id })
         return {
           bool: true,
           message: data.response
@@ -331,7 +346,7 @@ export const deleteUser = (id)=>{
 
 }
 
-export const updateUser = (data)=>{
+export const updateUser = (data) => {
   return async (dispatch, getState) => {
     let {
       adminToken
@@ -344,7 +359,7 @@ export const updateUser = (data)=>{
           "Content-Type": "application/json",
           "header": `${adminToken}`
         },
-        body:JSON.stringify(data)
+        body: JSON.stringify(data)
       })
 
 
@@ -367,7 +382,7 @@ export const updateUser = (data)=>{
 
       if (response.status === 200) {
         let data = await response.json()
-        dispatch({type:UPDATE_USER,payload:data.response})
+        dispatch({ type: UPDATE_USER, payload: data.response })
         return {
           bool: true,
           message: data.response
@@ -386,7 +401,8 @@ export const updateUser = (data)=>{
 }
 
 
-export const fetchDeposits = ()=>{
+//deposit controllers
+export const fetchDeposits = () => {
   return async (dispatch, getState) => {
     let {
       adminToken
@@ -419,7 +435,7 @@ export const fetchDeposits = ()=>{
 
       if (response.status === 200) {
         let data = await response.json()
-        dispatch({type:FETCH_DEPOSITS,payload:data.response})
+        dispatch({ type: FETCH_DEPOSITS, payload: data.response })
 
         return {
           bool: true,
@@ -438,7 +454,7 @@ export const fetchDeposits = ()=>{
 
 }
 
-export const deleteDeposit = (id)=>{
+export const deleteDeposit = (id) => {
   return async (dispatch, getState) => {
     let {
       adminToken
@@ -472,7 +488,7 @@ export const deleteDeposit = (id)=>{
       if (response.status === 200) {
         let data = await response.json()
 
-        dispatch({type:DELETE_DEPOSIT,payload:id})
+        dispatch({ type: DELETE_DEPOSIT, payload: id })
         return {
           bool: true,
           message: data.response
@@ -490,7 +506,7 @@ export const deleteDeposit = (id)=>{
 
 }
 
-export const updateDeposit = (data)=>{
+export const updateDeposit = (data) => {
   return async (dispatch, getState) => {
     let {
       adminToken
@@ -503,7 +519,7 @@ export const updateDeposit = (data)=>{
           "Content-Type": "application/json",
           "header": `${adminToken}`
         },
-        body:JSON.stringify(data)
+        body: JSON.stringify(data)
       })
 
 
@@ -526,7 +542,7 @@ export const updateDeposit = (data)=>{
 
       if (response.status === 200) {
         let data = await response.json()
-        dispatch({type:UPDATE_DEPOSIT,payload:data.response})
+        dispatch({ type: UPDATE_DEPOSIT, payload: data.response })
         return {
           bool: true,
           message: data.response
@@ -547,7 +563,7 @@ export const updateDeposit = (data)=>{
 
 
 //withdraw methods
-export const fetchWithdraws = ()=>{
+export const fetchWithdraws = () => {
   return async (dispatch, getState) => {
     let {
       adminToken
@@ -580,7 +596,7 @@ export const fetchWithdraws = ()=>{
 
       if (response.status === 200) {
         let data = await response.json()
-        dispatch({type:FETCH_WITHDRAWS,payload:data.response})
+        dispatch({ type: FETCH_WITHDRAWS, payload: data.response })
 
         return {
           bool: true,
@@ -598,7 +614,7 @@ export const fetchWithdraws = ()=>{
   }
 
 }
-export const deleteWithdraw = (id)=>{
+export const deleteWithdraw = (id) => {
   return async (dispatch, getState) => {
     let {
       adminToken
@@ -632,7 +648,7 @@ export const deleteWithdraw = (id)=>{
       if (response.status === 200) {
         let data = await response.json()
 
-        dispatch({type:DELETE_WITHDRAW,payload:id})
+        dispatch({ type: DELETE_WITHDRAW, payload: id })
         return {
           bool: true,
           message: data.response
@@ -649,7 +665,7 @@ export const deleteWithdraw = (id)=>{
   }
 
 }
-export const updateWithdraw = (data)=>{
+export const updateWithdraw = (data) => {
   return async (dispatch, getState) => {
     let {
       adminToken
@@ -662,7 +678,7 @@ export const updateWithdraw = (data)=>{
           "Content-Type": "application/json",
           "header": `${adminToken}`
         },
-        body:JSON.stringify(data)
+        body: JSON.stringify(data)
       })
 
 
@@ -685,7 +701,7 @@ export const updateWithdraw = (data)=>{
 
       if (response.status === 200) {
         let data = await response.json()
-        dispatch({type:UPDATE_WITHDRAW,payload:data.response})
+        dispatch({ type: UPDATE_WITHDRAW, payload: data.response })
         return {
           bool: true,
           message: data.response
@@ -710,7 +726,7 @@ export const updateWithdraw = (data)=>{
 
 
 //withdraw methods
-export const fetchTrades = ()=>{
+export const fetchTrades = () => {
   return async (dispatch, getState) => {
     let {
       adminToken
@@ -743,7 +759,7 @@ export const fetchTrades = ()=>{
 
       if (response.status === 200) {
         let data = await response.json()
-        dispatch({type:FETCH_TRADES,payload:data.response})
+        dispatch({ type: FETCH_TRADES, payload: data.response })
 
         return {
           bool: true,
@@ -761,7 +777,7 @@ export const fetchTrades = ()=>{
   }
 
 }
-export const deleteTrade = (id)=>{
+export const deleteTrade = (id) => {
   return async (dispatch, getState) => {
     let {
       adminToken
@@ -795,7 +811,7 @@ export const deleteTrade = (id)=>{
       if (response.status === 200) {
         let data = await response.json()
 
-        dispatch({type:DELETE_TRADE,payload:id})
+        dispatch({ type: DELETE_TRADE, payload: id })
         return {
           bool: true,
           message: data.response
@@ -812,7 +828,7 @@ export const deleteTrade = (id)=>{
   }
 
 }
-export const updateTrade = (data)=>{
+export const updateTrade = (data) => {
   return async (dispatch, getState) => {
     let {
       adminToken
@@ -825,7 +841,7 @@ export const updateTrade = (data)=>{
           "Content-Type": "application/json",
           "header": `${adminToken}`
         },
-        body:JSON.stringify(data)
+        body: JSON.stringify(data)
       })
 
 
@@ -848,7 +864,7 @@ export const updateTrade = (data)=>{
 
       if (response.status === 200) {
         let data = await response.json()
-        dispatch({type:UPDATE_TRADE,payload:data.response})
+        dispatch({ type: UPDATE_TRADE, payload: data.response })
         return {
           bool: true,
           message: data.response
@@ -865,7 +881,7 @@ export const updateTrade = (data)=>{
     }
   }
 }
-export const createTrade = (data)=>{
+export const createTrade = (data) => {
   return async (dispatch, getState) => {
     let {
       adminToken
@@ -878,7 +894,7 @@ export const createTrade = (data)=>{
           "Content-Type": "application/json",
           "header": `${adminToken}`
         },
-        body:JSON.stringify(data)
+        body: JSON.stringify(data)
       })
 
 
@@ -901,7 +917,390 @@ export const createTrade = (data)=>{
 
       if (response.status === 200) {
         let data = await response.json()
-        dispatch({type:CREATE_TRADE,payload:data.response})
+        console.log(data.response)
+        dispatch({ type: CREATE_TRADE, payload: data.response })
+        return {
+          bool: true,
+          message: data.response
+        }
+      }
+    }
+
+    catch (err) {
+      console.log(err)
+      return {
+        bool: false,
+        message: err.message
+      }
+    }
+  }
+}
+
+
+
+//package methods
+
+export const fetchPackages = () => {
+  return async (dispatch, getState) => {
+    let {
+      adminToken
+    } = getState().userAuth
+
+    try {
+      let response = await fetch(`https://dexvault-backend.onrender.com/packages`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "header": `${adminToken}`
+        }
+      })
+      //an error 
+      if (response.status === 300) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 301) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 200) {
+        let data = await response.json()
+        dispatch({ type: FETCH_PACKAGES, payload: data.response })
+
+        return {
+          bool: true,
+          message: data.response
+        }
+      }
+    }
+
+    catch (err) {
+      return {
+        bool: false,
+        message: err.message
+      }
+    }
+  }
+
+}
+export const deletePackage = (id) => {
+  return async (dispatch, getState) => {
+    let {
+      adminToken
+    } = getState().userAuth
+
+    try {
+      let response = await fetch(`https://dexvault-backend.onrender.com/packages/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "header": `${adminToken}`
+        }
+      })
+      //an error 
+      if (response.status === 300) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 301) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 200) {
+        let data = await response.json()
+
+        dispatch({ type: DELETE_PACKAGE, payload: id })
+        return {
+          bool: true,
+          message: data.response
+        }
+      }
+    }
+
+    catch (err) {
+      return {
+        bool: false,
+        message: err.message
+      }
+    }
+  }
+
+}
+export const updatePackage = (data) => {
+  return async (dispatch, getState) => {
+    let {
+      adminToken
+    } = getState().userAuth
+
+    try {
+      let response = await fetch(`https://dexvault-backend.onrender.com/packages/${data._id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "header": `${adminToken}`
+        },
+        body: JSON.stringify(data)
+      })
+
+
+      //an error 
+      if (response.status === 300) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 301) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 200) {
+        let data = await response.json()
+        dispatch({ type: UPDATE_PACKAGE, payload: data.response })
+        return {
+          bool: true,
+          message: data.response
+        }
+      }
+    }
+
+    catch (err) {
+      console.log(err)
+      return {
+        bool: false,
+        message: err.message
+      }
+    }
+  }
+}
+export const createPackage = (data) => {
+  return async (dispatch, getState) => {
+    let {
+      adminToken
+    } = getState().userAuth
+
+    try {
+      let response = await fetch(`https://dexvault-backend.onrender.com/packages`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "header": `${adminToken}`
+        },
+        body: JSON.stringify(data)
+      })
+
+
+      //an error 
+      if (response.status === 300) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+      if (response.status === 500) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 301) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 200) {
+        let data = await response.json()
+        dispatch({ type: CREATE_PACKAGE, payload: data.response })
+        return {
+          bool: true,
+          message: data.response
+        }
+      }
+    }
+
+    catch (err) {
+      console.log(err)
+      return {
+        bool: false,
+        message: err.message
+      }
+    }
+  }
+}
+
+
+
+
+//investment controllers
+export const fetchInvestments = () => {
+  return async (dispatch, getState) => {
+    let {
+      adminToken
+    } = getState().userAuth
+
+    try {
+      let response = await fetch(`https://dexvault-backend.onrender.com/investments`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "header": `${adminToken}`
+        }
+      })
+      //an error 
+      if (response.status === 300) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 301) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 200) {
+        let data = await response.json()
+        dispatch({ type: FETCH_INVESTMENTS, payload: data.response })
+
+        return {
+          bool: true,
+          message: data.response
+        }
+      }
+    }
+
+    catch (err) {
+      return {
+        bool: false,
+        message: err.message
+      }
+    }
+  }
+
+}
+
+export const deleteInvestment = (id) => {
+  return async (dispatch, getState) => {
+    let {
+      adminToken
+    } = getState().userAuth
+
+    try {
+      let response = await fetch(`https://dexvault-backend.onrender.com/investments/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "header": `${adminToken}`
+        }
+      })
+      //an error 
+      if (response.status === 300) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 301) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 200) {
+        let data = await response.json()
+
+        dispatch({ type: DELETE_INVESTMENT, payload: id })
+        return {
+          bool: true,
+          message: data.response
+        }
+      }
+    }
+
+    catch (err) {
+      return {
+        bool: false,
+        message: err.message
+      }
+    }
+  }
+
+}
+
+export const updateInvestment = (data) => {
+  return async (dispatch, getState) => {
+    let {
+      adminToken
+    } = getState().userAuth
+
+    try {
+      let response = await fetch(`https://dexvault-backend.onrender.com/investments/${data._id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "header": `${adminToken}`
+        },
+        body: JSON.stringify(data)
+      })
+
+
+      //an error 
+      if (response.status === 300) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 301) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+
+      if (response.status === 200) {
+        let data = await response.json()
+        dispatch({ type: UPDATE_INVESTMENT, payload: data.response })
         return {
           bool: true,
           message: data.response
@@ -923,14 +1322,12 @@ export const createTrade = (data)=>{
 
 
 
-
-
-export const updateAdmin = (data)=>{
+export const updateAdmin = (data) => {
   return async (dispatch, getState) => {
     let {
       adminToken
     } = getState().userAuth//http://192.168.43.202:xxxxxxxx9090
-//https://backend.dexvaultxx.net
+    //https://backend.dexvaultxx.net
     try {
       let response = await fetch(`https://dexvault-backend.onrender.com/admin/${data._id}`, {
         method: "PATCH",
@@ -938,11 +1335,10 @@ export const updateAdmin = (data)=>{
           "Content-Type": "application/json",
           "header": `${adminToken}`
         },
-        body:JSON.stringify(data)
+        body: JSON.stringify(data)
       })
 
 
-      //an error 
       if (response.status === 300) {
         let data = await response.json()
         return {
@@ -961,7 +1357,7 @@ export const updateAdmin = (data)=>{
 
       if (response.status === 200) {
         let data = await response.json()
-        dispatch({type:UPDATE_ADMIN,payload:data.response})
+        dispatch({ type: UPDATE_ADMIN, payload: data.response })
         return {
           bool: true,
           message: data.response
@@ -979,7 +1375,7 @@ export const updateAdmin = (data)=>{
   }
 }
 
-export const logout = (id)=>{
+export const logout = (id) => {
   return async (dispatch, getState) => {
 
   }
