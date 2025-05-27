@@ -84,8 +84,8 @@ export const AdminDepositEditComponent = ({ updateHandler }) => {
                                     transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
                                 }}
                             >
-                                <option value="active">Active</option>
-                                <option value="Pending">Pending</option>
+                                <option value="active">active</option>
+                                <option value="pending">pending</option>
                             </select>
 
 

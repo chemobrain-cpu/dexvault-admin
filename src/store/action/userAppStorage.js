@@ -104,7 +104,7 @@ export const checkIfAdminIsLoggedIn = () => {
 
 
 
-      response = await fetch(`http://192.168.43.202:9090/adminbytoken`, {
+      response = await fetch(`https://backend.dexvault.net/adminbytoken`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -125,7 +125,7 @@ export const checkIfAdminIsLoggedIn = () => {
 export const loginAdmin = (data) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch('http://192.168.43.202:9090/adminlogin', {
+      let response = await fetch('https://backend.dexvault.net/adminlogin', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -183,7 +183,7 @@ export const loginAdmin = (data) => {
 export const signupAdmin = (data) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch(`http://192.168.43.202:9090/adminsignup`, {
+      let response = await fetch(`https://backend.dexvault.net/adminsignup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -249,7 +249,7 @@ export const fetchUsers = () => {
       adminToken
     } = getState().userAuth
     try {
-      let response = await fetch(`http://192.168.43.202:9090/users`, {
+      let response = await fetch(`https://backend.dexvault.net/users`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -301,7 +301,7 @@ export const deleteUser = (id) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/users/${id}`, {
+      let response = await fetch(`https://backend.dexvault.net/users/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -353,7 +353,7 @@ export const updateUser = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/users/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/users/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -409,7 +409,7 @@ export const fetchDeposits = () => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/deposits`, {
+      let response = await fetch(`https://backend.dexvault.net/deposits`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -461,7 +461,7 @@ export const deleteDeposit = (id) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/deposits/${id}`, {
+      let response = await fetch(`https://backend.dexvault.net/deposits/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -513,7 +513,7 @@ export const updateDeposit = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/deposits/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/deposits/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -570,7 +570,7 @@ export const fetchWithdraws = () => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/withdraws`, {
+      let response = await fetch(`https://backend.dexvault.net/withdraws`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -621,7 +621,7 @@ export const deleteWithdraw = (id) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/withdraws/${id}`, {
+      let response = await fetch(`https://backend.dexvault.net/withdraws/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -672,7 +672,7 @@ export const updateWithdraw = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/withdraws/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/withdraws/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -733,7 +733,7 @@ export const fetchTrades = () => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/trades`, {
+      let response = await fetch(`https://backend.dexvault.net/trades`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -784,7 +784,7 @@ export const deleteTrade = (id) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/trades/${id}`, {
+      let response = await fetch(`https://backend.dexvault.net/trades/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -835,7 +835,7 @@ export const updateTrade = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/trades/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/trades/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -888,7 +888,7 @@ export const createTrade = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/trades`, {
+      let response = await fetch(`https://backend.dexvault.net/trades`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -947,7 +947,7 @@ export const fetchPackages = () => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/packages`, {
+      let response = await fetch(`https://backend.dexvault.net/packages`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -998,7 +998,7 @@ export const deletePackage = (id) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/packages/${id}`, {
+      let response = await fetch(`https://backend.dexvault.net/packages/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -1049,7 +1049,7 @@ export const updatePackage = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/packages/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/packages/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -1102,7 +1102,7 @@ export const createPackage = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/packages`, {
+      let response = await fetch(`https://backend.dexvault.net/packages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1167,7 +1167,7 @@ export const fetchInvestments = () => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/investments`, {
+      let response = await fetch(`https://backend.dexvault.net/investments`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -1219,7 +1219,7 @@ export const deleteInvestment = (id) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/investments/${id}`, {
+      let response = await fetch(`https://backend.dexvault.net/investments/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -1271,7 +1271,7 @@ export const updateInvestment = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`http://192.168.43.202:9090/investments/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/investments/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -1329,7 +1329,7 @@ export const updateAdmin = (data) => {
     } = getState().userAuth//http://192.168.43.202:xxxxxxxx9090
     //https://backend.dexvaultxx.net
     try {
-      let response = await fetch(`http://192.168.43.202:9090/admin/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/admin/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
