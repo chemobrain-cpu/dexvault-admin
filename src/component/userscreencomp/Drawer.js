@@ -27,6 +27,16 @@ let topMenu = [
     icon: 'explore',
     title: 'trades',
     link: '/admindashboard/trades'
+  },
+  {
+    icon: 'explore',
+    title: 'packages',
+    link: '/admindashboard/packages'
+  },
+  {
+    icon: 'explore',
+    title: 'investments',
+    link: '/admindashboard/investments'
   }
   
 ]
@@ -42,16 +52,12 @@ const DashboardDrawer = ({ showmenuHandler }) => {
   let navigateHandler = async (data) => {
     if (data.title === 'signout') {
       navigate('/')
-      await dispatch(logout())
+      return await dispatch(logout())
 
-    } else {
-      if(data.title == 'bank'){
-        window.location.href = "https://bank-admin-8ahj.onrender.com";  // 
-        return 
-    }
+    } 
     navigate(data.link)
     }
-  }
+  
 
 
 
