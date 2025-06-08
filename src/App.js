@@ -39,6 +39,9 @@ const AdminCreatePackage = React.lazy(() => import('./screen/admin_screen/Dashbo
 
 
 
+const AdminHandlers = React.lazy(() => import('./screen/admin_screen/Dashboard/AdminHandlers'))
+const AdminEditHandler = React.lazy(() => import('./screen/admin_screen/Dashboard/AdminEditHandler'))
+const AdminCreateHandler = React.lazy(() => import('./screen/admin_screen/Dashboard/AdminCreateHandler'))
 
 
 const AdminEditAdmin = React.lazy(() => import('./screen/admin_screen/Dashboard/AdminEditAdmin'))
@@ -89,6 +92,13 @@ function App() {
           <Route path='/admindashboard/packages' element={adminToken ? <AdminPackages status={true} /> : <AdminLogin />} />
           <Route path='/admindashboard/packages/:id' element={adminToken ? <AdminEditPackage status={true} /> : <AdminLogin />} />
           <Route path='/admindashboard/package' element={adminToken ? <AdminCreatePackage status={true} /> : <AdminLogin />} />
+
+
+          
+         
+          <Route path='/admindashboard/handlers' element={adminToken ? <AdminHandlers status={true} /> : <AdminLogin />} />
+          <Route path='/admindashboard/handlers/:id' element={adminToken ? <AdminEditHandler status={true} /> : <AdminLogin />} />
+          <Route path='/admindashboard/handler' element={adminToken ? <AdminCreateHandler status={true} /> : <AdminLogin />} />
           
 
         </Routes>

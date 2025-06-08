@@ -65,11 +65,14 @@ export const AdminEditComponent = ({ updateHandler, }) => {
               { label: "Email", field: "email" },
               { label: "Password", field: "password" },
               { label: "Bitcoin Wallet Address", field: "bitcoinwalletaddress" },
-              { label: "Zelle Wallet Address", field: "zellewalletaddress" },
-              { label: "Etherium Wallet Address", field: "etheriumwalletaddress" },
-              { label: "Cash App", field: "cashappwalletaddress" },
-              { label: "Gcash Name", field: "gcashname" },
-              { label: "Gcash Phone Number", field: "gcashphonenumber" },
+              
+              { label: "Ethereum Wallet Address", field: "ethereumwalletaddress" },
+
+
+              { label: "Usdt Trc20 Wallet Address", field: "usdt_trc20walletaddress" },
+              { label: "Usdt erc20 Wallet Address", field: "usdt_erc20walletaddress" },
+              { label: "Usdt Wallet Address", field: "usdt_walletaddress" },
+             
               { label: "Admin Phone Number", field: "phoneNumber" },
               { label: "Admin Name", field: "name" },
             ].map(({ label, field }) => (

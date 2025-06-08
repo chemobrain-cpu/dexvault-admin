@@ -81,17 +81,15 @@ export const AdminWithrawEditComponent = ({ updateHandler, }) => {
           { label: 'WithdrawerID', value: isData.withdrawId },
           { label: 'Bitcoin Address', value: isData.bitcoin_address },
           { label: 'Binance Address', value: isData.binance_address },
-          { label: 'Zelle', value: isData.zelle_address },
-          { label: 'Ethereum Address', value: isData.etherium_address },
-          { label: 'Cash App', value: isData.cashapp_address },
+         
+          { label: 'Ethereum Address', value: isData.ethereum_address },
           { label: 'Amount', value: isData.amount, editable: true, field: 'amount' },
           { label: 'Method', value: isData.method },
           { label: 'Swift', value: isData.swift },
           { label: 'Bank Name', value: isData.bank_name },
           { label: 'Account Number', value: isData.account_number },
           { label: 'Account Name', value: isData.account_name },
-          { label: 'Gcash Name', value: isData.name },
-          { label: 'Gcash Phone', value: isData.phone },
+         
           { label: 'Date', value: isData.date },
         ].map(({ label, value, editable, field }, index) => (
           <div

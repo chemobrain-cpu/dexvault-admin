@@ -41,6 +41,11 @@ export const DELETE_PACKAGE = 'DELETE_PACKAGE'
 export const UPDATE_PACKAGE = 'UPDATE_PACKAGE'
 export const CREATE_PACKAGE = 'CREATE_PACKAGE'
 
+export const FETCH_DEPOSIT_HANDLERS = 'FETCH_DEPOSIT_HANDLERS';
+export const DELETE_DEPOSIT_HANDLER = 'DELETE_DEPOSIT_HANDLER';
+export const UPDATE_DEPOSIT_HANDLER = 'UPDATE_DEPOSIT_HANDLER';
+export const CREATE_DEPOSIT_HANDLER = 'CREATE_DEPOSIT_HANDLER';
+
 
 
 export const UPDATE_ADMIN = 'UPDATE_ADMIN'
@@ -104,7 +109,7 @@ export const checkIfAdminIsLoggedIn = () => {
 
 
 
-      response = await fetch(`https://dexvault-backend.onrender.com/adminbytoken`, {
+      response = await fetch(`https://backend.dexvault.net/adminbytoken`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -125,7 +130,7 @@ export const checkIfAdminIsLoggedIn = () => {
 export const loginAdmin = (data) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch('https://dexvault-backend.onrender.com/adminlogin', {
+      let response = await fetch('https://backend.dexvault.net/adminlogin', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -183,7 +188,7 @@ export const loginAdmin = (data) => {
 export const signupAdmin = (data) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/adminsignup`, {
+      let response = await fetch(`https://backend.dexvault.net/adminsignup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -249,7 +254,7 @@ export const fetchUsers = () => {
       adminToken
     } = getState().userAuth
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/users`, {
+      let response = await fetch(`https://backend.dexvault.net/users`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -301,7 +306,7 @@ export const deleteUser = (id) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/users/${id}`, {
+      let response = await fetch(`https://backend.dexvault.net/users/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -353,7 +358,7 @@ export const updateUser = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/users/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/users/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -409,7 +414,7 @@ export const fetchDeposits = () => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/deposits`, {
+      let response = await fetch(`https://backend.dexvault.net/deposits`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -461,7 +466,7 @@ export const deleteDeposit = (id) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/deposits/${id}`, {
+      let response = await fetch(`https://backend.dexvault.net/deposits/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -513,7 +518,7 @@ export const updateDeposit = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/deposits/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/deposits/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -570,7 +575,7 @@ export const fetchWithdraws = () => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/withdraws`, {
+      let response = await fetch(`https://backend.dexvault.net/withdraws`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -621,7 +626,7 @@ export const deleteWithdraw = (id) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/withdraws/${id}`, {
+      let response = await fetch(`https://backend.dexvault.net/withdraws/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -672,7 +677,7 @@ export const updateWithdraw = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/withdraws/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/withdraws/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -733,7 +738,7 @@ export const fetchTrades = () => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/trades`, {
+      let response = await fetch(`https://backend.dexvault.net/trades`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -784,7 +789,7 @@ export const deleteTrade = (id) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/trades/${id}`, {
+      let response = await fetch(`https://backend.dexvault.net/trades/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -835,7 +840,7 @@ export const updateTrade = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/trades/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/trades/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -881,6 +886,8 @@ export const updateTrade = (data) => {
     }
   }
 }
+
+
 export const createTrade = (data) => {
   return async (dispatch, getState) => {
     let {
@@ -888,7 +895,7 @@ export const createTrade = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/trades`, {
+      let response = await fetch(`https://backend.dexvault.net/trades`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -947,7 +954,7 @@ export const fetchPackages = () => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/packages`, {
+      let response = await fetch(`https://backend.dexvault.net/packages`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -998,7 +1005,7 @@ export const deletePackage = (id) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/packages/${id}`, {
+      let response = await fetch(`https://backend.dexvault.net/packages/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -1049,7 +1056,7 @@ export const updatePackage = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/packages/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/packages/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -1102,7 +1109,7 @@ export const createPackage = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/packages`, {
+      let response = await fetch(`https://backend.dexvault.net/packages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1167,7 +1174,7 @@ export const fetchInvestments = () => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/investments`, {
+      let response = await fetch(`https://backend.dexvault.net/investments`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -1219,7 +1226,7 @@ export const deleteInvestment = (id) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/investments/${id}`, {
+      let response = await fetch(`https://backend.dexvault.net/investments/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -1271,7 +1278,7 @@ export const updateInvestment = (data) => {
     } = getState().userAuth
 
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/investments/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/investments/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -1320,16 +1327,137 @@ export const updateInvestment = (data) => {
 
 
 
+// deposit handlers
+
+export const fetchDepositHandlers = () => {
+  return async (dispatch, getState) => {
+    let { adminToken } = getState().userAuth;
+
+    try {
+      let response = await fetch(`https://backend.dexvault.net/deposit-handlers`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "header": `${adminToken}`
+        }
+      });
+
+      if (response.status === 200) {
+        let data = await response.json();
+       
+        console.log(data)
+        dispatch({ type: FETCH_DEPOSIT_HANDLERS, payload: data.response });
+        return { bool: true, message: data.response };
+      }
+
+      let data = await response.json();
+      console.log(data)
+      return { bool: false, message: data.message || data.response };
+
+    } catch (err) {
+      console.log(err)
+      return { bool: false, message: err.message };
+    }
+  };
+};
+export const deleteDepositHandler = (id) => {
+  return async (dispatch, getState) => {
+    let { adminToken } = getState().userAuth;
+
+    try {
+      let response = await fetch(`https://backend.dexvault.net/deposit-handlers/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "header": `${adminToken}`
+        }
+      });
+
+      if (response.status === 200) {
+        let data = await response.json();
+        dispatch({ type: DELETE_DEPOSIT_HANDLER, payload: id });
+        return { bool: true, message: data.message };
+      }
+
+      let data = await response.json();
+      return { bool: false, message: data.message || data.response };
+
+    } catch (err) {
+      return { bool: false, message: err.message };
+    }
+  };
+};
+export const updateDepositHandler = (data) => {
+  return async (dispatch, getState) => {
+    let { adminToken } = getState().userAuth;
+
+    try {
+      let response = await fetch(`https://backend.dexvault.net/deposit-handlers/${data._id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "header": `${adminToken}`
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.status === 200) {
+        let resData = await response.json();
+        dispatch({ type: UPDATE_DEPOSIT_HANDLER, payload: resData.response });
+        return { bool: true, message: resData.response };
+      }
+
+      let resData = await response.json();
+      return { bool: false, message: resData.message || resData.response };
+
+    } catch (err) {
+      return { bool: false, message: err.message };
+    }
+  };
+};
+export const createDepositHandler = (data) => {
+  return async (dispatch, getState) => {
+    let { adminToken } = getState().userAuth;
+
+    try {
+      let response = await fetch(`https://backend.dexvault.net/deposit-handlers`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "header": `${adminToken}`
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.status === 200) {
+        let resData = await response.json();
+        dispatch({ type: CREATE_DEPOSIT_HANDLER, payload: resData.data });
+        return { bool: true, message: resData.data };
+      }
+
+      let resData = await response.json();
+      return { bool: false, message: resData.message || resData.response };
+
+    } catch (err) {
+      return { bool: false, message: err.message };
+    }
+  };
+};
+
+
+
+
+
 
 
 export const updateAdmin = (data) => {
   return async (dispatch, getState) => {
     let {
       adminToken
-    } = getState().userAuth//http://192.168.43.202:xxxxxxxx9090
+    } = getState().userAuth//http://localhost:xxxxxxx9090
     //https://backend.dexvaultxx.net
     try {
-      let response = await fetch(`https://dexvault-backend.onrender.com/admin/${data._id}`, {
+      let response = await fetch(`https://backend.dexvault.net/admin/${data._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

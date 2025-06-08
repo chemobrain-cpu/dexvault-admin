@@ -1,12 +1,12 @@
 import {
     LOG_ADMIN_IN, LOGIN_ADMIN,
     FETCH_USERS, FETCH_USER, UPDATE_USER, DELETE_USER,
-    FETCH_DEPOSITS,  UPDATE_DEPOSIT, DELETE_DEPOSIT,
-    FETCH_WITHDRAWS,  UPDATE_WITHDRAW, DELETE_WITHDRAW,
-    FETCH_TRADES,  UPDATE_TRADE, DELETE_TRADE, CREATE_TRADE,
-    FETCH_PACKAGES,  CREATE_PACKAGE, UPDATE_PACKAGE, DELETE_PACKAGE,
+    FETCH_DEPOSITS, UPDATE_DEPOSIT, DELETE_DEPOSIT,
+    FETCH_WITHDRAWS, UPDATE_WITHDRAW, DELETE_WITHDRAW,
+    FETCH_TRADES, UPDATE_TRADE, DELETE_TRADE, CREATE_TRADE,
+    FETCH_PACKAGES, CREATE_PACKAGE, UPDATE_PACKAGE, DELETE_PACKAGE,
     FETCH_INVESTMENTS, DELETE_INVESTMENT, UPDATE_INVESTMENT,
-    UPDATE_ADMIN
+    UPDATE_ADMIN, FETCH_DEPOSIT_HANDLERS, DELETE_DEPOSIT_HANDLER, UPDATE_DEPOSIT_HANDLER, CREATE_DEPOSIT_HANDLER
 } from "../action/userAppStorage";
 
 const initialState = {
@@ -25,7 +25,8 @@ const initialState = {
     withdrawsList: [],
     tradesList: [],
     packagesList: [],
-    investmentsList: []
+    investmentsList: [],
+    depositHandlersList: []
 };
 
 export const userAuthReducer = (state = initialState, action) => {
@@ -220,10 +221,44 @@ export const userAuthReducer = (state = initialState, action) => {
             };
         }
 
+        // DEPOSIT HANDLERS
+        case FETCH_DEPOSIT_HANDLERS:
+            return {
+                ...state,
+                depositHandlersList: action.payload
+            };
+
+        case CREATE_DEPOSIT_HANDLER:
+            return {
+                ...state,
+                depositHandlersList: [...state.depositHandlersList, action.payload]
+            };
+
+        case UPDATE_DEPOSIT_HANDLER: {
+            const updatedHandler = action.payload;
+            const newDepositHandlersList = state.depositHandlersList.map(handler =>
+                handler._id === updatedHandler._id ? updatedHandler : handler
+            );
+            return {
+                ...state,
+                depositHandlersList: newDepositHandlersList
+            };
+        }
+
+        case DELETE_DEPOSIT_HANDLER: {
+            const handlerId = action.payload;
+            const newDepositHandlersList = state.depositHandlersList.filter(handler => handler._id !== handlerId);
+            return {
+                ...state,
+                depositHandlersList: newDepositHandlersList
+            };
+        }
+
         default:
             return state;
     }
 };
+
 
 
 

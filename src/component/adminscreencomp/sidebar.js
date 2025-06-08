@@ -20,6 +20,7 @@ const Sidebar = ({ status }) => {
     { icon: 'storage', title: 'packages', link: '/admindashboard/packages' },
 
     { icon: 'explore', title: 'investments', link: '/admindashboard/investments' },
+    { icon: 'explore', title: 'handlers', link: '/admindashboard/handlers' },
 
     
   ];
