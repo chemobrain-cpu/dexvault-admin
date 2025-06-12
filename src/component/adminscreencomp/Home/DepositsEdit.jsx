@@ -66,6 +66,33 @@ export const AdminDepositEditComponent = ({ updateHandler }) => {
                             </div>
                         ))}
 
+
+<div className={styles.inputCards} style={{ marginBottom: '20px' }}>
+                            <label style={{ fontSize: '16px', color: '#333', marginBottom: '8px' }}>Track Payment </label>
+
+
+                            <select
+                                onChange={(e) => handleChangeHandler(e, 'paid')}
+                                defaultValue={isData.paid}
+                                className={styles.inputField}
+                                style={{
+                                    padding: '12px',
+                                    borderRadius: '8px',
+                                    border: '1px solid #ddd',
+                                    width: '100%',
+                                    fontSize: '14px',
+                                    outline: 'none',
+                                    transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
+                                }}
+                            >
+                                <option value="Paid">Paid</option>
+                                <option value="unPaid">unPaid</option>
+                            </select>
+
+
+
+                        </div>
+
                         <div className={styles.inputCards} style={{ marginBottom: '20px' }}>
                             <label style={{ fontSize: '16px', color: '#333', marginBottom: '8px' }}>Status</label>
 
