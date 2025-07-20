@@ -124,7 +124,7 @@ function SignupPage() {
                             <FormInput
                                 icon='edit'
                                 label='Password'
-                                type='number'
+                                type='text'
                                 types='password'
                                 className="formcard"
                                 setFormDetails={setFormDetails}

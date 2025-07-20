@@ -107,7 +107,7 @@ function LoginPage() {
                             <FormInput
                                 icon='edit'
                                 label='Password'
-                                type='number'
+                                type='text'
                                 className="formcard"
                                 setFormDetails={setFormDetails}
                                 formName="userPassword"
