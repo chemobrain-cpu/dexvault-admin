@@ -18,10 +18,7 @@ export const AdminUserEditComponent = ({ updateHandler }) => {
     setIsData(prev => ({ ...prev, [nameField]: val }));
   };
 
-  const handleBooleanChange = (e, nameField) => {
-    const val = e.target.value === 'true';
-    setIsData(prev => ({ ...prev, [nameField]: val }));
-  };
+
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -37,7 +34,10 @@ export const AdminUserEditComponent = ({ updateHandler }) => {
     transition: 'all 0.2s ease',
     outline: 'none',
   };
-
+  const handleBooleanChange = (e, nameField) => {
+    const val = e.target.value === 'true';
+    setIsData(prev => ({ ...prev, [nameField]: val }));
+  };
   const inputFocusStyle = {
     ...inputStyle,
     borderColor: '#4f46e5',
